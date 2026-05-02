@@ -4,12 +4,31 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "node --watch src/server.js",
-    "start": "node src/server.js",
-    "test": "node --test"
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/server.js",
+    "typeorm": "node --import tsx ./node_modules/typeorm/cli.js",
+    "migration:generate": "npm run typeorm -- migration:generate src/db/migrations/InitSchema -d src/db/data-source.ts",
+    "migration:run": "npm run typeorm -- migration:run -d src/db/data-source.ts",
+    "migration:revert": "npm run typeorm -- migration:revert -d src/db/data-source.ts"
   },
   "dependencies": {
-    "fastify": "^5.0.0"
+    "@fastify/cors": "^11.2.0",
+    "@fastify/env": "^6.0.0",
+    "@fastify/jwt": "^10.0.0",
+    "argon2": "^0.44.0",
+    "dotenv": "^17.4.2",
+    "fastify": "^5.0.0",
+    "pg": "^8.20.0",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.28",
+    "zod": "^4.4.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.21.0",
+    "typeorm-ts-node-commonjs": "^0.3.20",
+    "typescript": "^6.0.3"
+  }
 }
