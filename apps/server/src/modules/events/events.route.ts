@@ -1,16 +1,37 @@
 import { FastifyPluginAsync } from "fastify";
 
-import { Event as EventEntity } from '../../db/entities/event.entity'
-import { EventParticipant } from "../../db/entities";
+import {
+    createEventBodySchema,
+    errorResponseSchema,
+    eventParamsSchema,
+    eventParticipantSchema,
+    eventSchema,
+    updateEventBodySchema,
+    validationErrorResponseSchema,
+} from "../swagger/docs.schemas";
+import { sendServiceError } from "../service-error";
 import { createEventSchema, updateEventSchema } from "./events.schema";
+import { EventsService } from "./events.service";
 
 type EventParams = { id: string }
 
 export const eventsRoutes: FastifyPluginAsync = async (app) => {
-    const eventRepository = app.db.getRepository(EventEntity);
-    const participantsRepository = app.db.getRepository(EventParticipant)
+    const eventsService = new EventsService(app.db);
 
-    app.post('/', { preHandler: [app.authenticate]} , async (request, reply) => {
+    app.post('/', {
+        preHandler: [app.authenticate],
+        schema: {
+            tags: ['Events'],
+            summary: 'Create an event',
+            security: [{ bearerAuth: [] }],
+            body: createEventBodySchema,
+            response: {
+                201: eventSchema,
+                400: validationErrorResponseSchema,
+                401: errorResponseSchema,
+            },
+        },
+    } , async (request, reply) => {
         const parsedBody = createEventSchema.safeParse(request.body);
 
         if (!parsedBody.success) {
@@ -23,67 +44,72 @@ export const eventsRoutes: FastifyPluginAsync = async (app) => {
             })
         }
 
-        const {
-            title,
-            description,
-            capacity,
-            address,
-            startedAt,
-        } = parsedBody.data
-
-
-        const event = eventRepository.create({
-            title,
-            description,
-            capacity,
-            address,
-            startedAt,
-            ownerId: request.user.sub
-        })
-
-        const savedEvenet = await eventRepository.save(event);
-
-        return reply.code(201).send(savedEvenet)
+        const event = await eventsService.createEvent(parsedBody.data, request.user.sub);
+        return reply.code(201).send(event);
     })
 
-    app.get('/', { preHandler: [app.authenticate]}, async () => {
-        return eventRepository.find({
-            order: { startedAt: 'ASC'}
-        })
+    app.get('/', {
+        preHandler: [app.authenticate],
+        schema: {
+            tags: ['Events'],
+            summary: 'List events',
+            security: [{ bearerAuth: [] }],
+            response: {
+                200: {
+                    type: 'array',
+                    items: eventSchema,
+                },
+                401: errorResponseSchema,
+            },
+        },
+    }, async () => {
+        return eventsService.listEvents();
     })
 
     app.get<{ Params: EventParams }>('/:id',
-        { preHandler: [app.authenticate]},
+        {
+            preHandler: [app.authenticate],
+            schema: {
+                tags: ['Events'],
+                summary: 'Get an event',
+                security: [{ bearerAuth: [] }],
+                params: eventParamsSchema,
+                response: {
+                    200: eventSchema,
+                    401: errorResponseSchema,
+                    404: errorResponseSchema,
+                },
+            },
+        },
         async (request, reply) => {
-            const event = await eventRepository.findOne({
-                where: { id: request.params.id }
-            })
-
-            if (!event) {
-                return reply.code(404).send({ message: 'Событие не найдо' })
+            try {
+                const event = await eventsService.getEventById(request.params.id);
+                return reply.send(event);
+            } catch (error) {
+                return sendServiceError(reply, error);
             }
-
-            return reply.send(event)
         })
 
     app.patch<{ Params: EventParams }>(
         '/:id',
-        { preHandler: [app.authenticate]},
+        {
+            preHandler: [app.authenticate],
+            schema: {
+                tags: ['Events'],
+                summary: 'Update an event',
+                security: [{ bearerAuth: [] }],
+                params: eventParamsSchema,
+                body: updateEventBodySchema,
+                response: {
+                    200: eventSchema,
+                    400: validationErrorResponseSchema,
+                    401: errorResponseSchema,
+                    403: errorResponseSchema,
+                    404: errorResponseSchema,
+                },
+            },
+        },
         async (request, reply) => {
-            const event = await eventRepository.findOne({
-                where: { id: request.params.id}
-            })
-
-            if (!event) {
-                return reply.code(404).send({ message: 'Событие не найдо' })
-            }
-
-            if (event.ownerId !== request.user.sub) {
-                return reply.code(403).send({
-                    message: 'Только владелец может редактировать'
-                })
-            }
-
             const parsedBody = updateEventSchema.safeParse(request.body);
 
             if(!parsedBody.success) {
@@ -96,134 +122,107 @@ export const eventsRoutes: FastifyPluginAsync = async (app) => {
                 })
             }
 
-            const {
-                title,
-                description,
-                capacity,
-                address,
-                startedAt,
-            } = parsedBody.data
-
-            if (title !== undefined) {
-                event.title = title
+            try {
+                const event = await eventsService.updateEvent(request.params.id, request.user.sub, parsedBody.data);
+                return reply.send(event);
+            } catch (error) {
+                return sendServiceError(reply, error);
             }
-
-            if (description !== undefined) {
-                event.description = description
-            }
-
-            if (capacity !== undefined) {
-                event.capacity = capacity
-            }
-
-            if (address !== undefined) {
-                event.address = address
-            }
-
-            if (startedAt !== undefined) {
-                event.startedAt = startedAt
-            }
-
-            const updatedEvent = await eventRepository.save(event);
-
-            return reply.send(updatedEvent)
         })
 
     app.delete<{ Params: EventParams }>(
         '/:id',
-        { preHandler: [app.authenticate]}, async (request, reply) => {
-            const event = await eventRepository.findOne({ where: { id: request.params.id }});
-
-            if (!event) {
-                return reply.code(404).send({ message: 'Событие не найдо' })
+        {
+            preHandler: [app.authenticate],
+            schema: {
+                tags: ['Events'],
+                summary: 'Delete an event',
+                security: [{ bearerAuth: [] }],
+                params: eventParamsSchema,
+                response: {
+                    204: {
+                        type: 'null',
+                        description: 'Event deleted',
+                    },
+                    401: errorResponseSchema,
+                    403: errorResponseSchema,
+                    404: errorResponseSchema,
+                },
+            },
+        }, async (request, reply) => {
+            try {
+                await eventsService.deleteEvent(request.params.id, request.user.sub);
+                return reply.code(204).send();
+            } catch (error) {
+                return sendServiceError(reply, error);
             }
-
-            if (event.ownerId !== request.user.sub) {
-                return reply.code(403).send({
-                    message: 'Только владелец может удалить свое событие'
-                })
-            }
-
-            await eventRepository.delete({ id: event.id })
-            return reply.code(204).send()
         })
 
     app.post<{ Params: EventParams }>(
         '/:id/join',
-        { preHandler: [app.authenticate]},
+        {
+            preHandler: [app.authenticate],
+            schema: {
+                tags: ['Events'],
+                summary: 'Join an event',
+                security: [{ bearerAuth: [] }],
+                params: eventParamsSchema,
+                response: {
+                    201: {
+                        type: 'object',
+                        properties: {
+                            message: { type: 'string' },
+                            participation: eventParticipantSchema,
+                        },
+                        required: ['message', 'participation'],
+                    },
+                    400: errorResponseSchema,
+                    401: errorResponseSchema,
+                    404: errorResponseSchema,
+                    409: errorResponseSchema,
+                },
+            },
+        },
         async (request, reply) => {
-            const event = await eventRepository.findOne({ where: { id: request.params.id }});
-
-            if (!event) {
-                return reply.code(404).send({ message: 'Событие не найдо' })
-            }
-
-
-            if (event.ownerId === request.user.sub) {
-                return reply.code(400).send({
-                    message: 'Нельзя присоединиться к своему событию'
+            try {
+                const participation = await eventsService.joinEvent(request.params.id, request.user.sub);
+                return reply.code(201).send({
+                    message: "Вы присоединились к событию",
+                    participation,
                 })
+            } catch (error) {
+                return sendServiceError(reply, error);
             }
-
-            const existingParticipation = await participantsRepository.findOne({
-                where: { eventId: event.id, userId: request.user.sub}
-            })
-
-            if (existingParticipation) {
-                return reply.code(409).send({
-                    message: 'Вы уже присоединились к событию'
-                })
-            }
-
-            const participationCount = await participantsRepository.count({
-                where: { eventId: event.id}
-            })
-
-            if (participationCount >= event.capacity) {
-                return reply.code(409).send({
-                    message: 'Свободных мест нету'
-                })
-            }
-
-            const participation = participantsRepository.create({
-                eventId: event.id,
-                userId:  request.user.sub
-            })
-
-            const savedParicipation = await participantsRepository.save(participation)
-
-            return reply.code(201).send({
-                message: "Вы присоединились к событию",
-                participation: savedParicipation
-            })
         }
     )
 
     app.delete<{ Params: EventParams }>(
         '/:id/join',
-        { preHandler: [app.authenticate]},
+        {
+            preHandler: [app.authenticate],
+            schema: {
+                tags: ['Events'],
+                summary: 'Leave an event',
+                security: [{ bearerAuth: [] }],
+                params: eventParamsSchema,
+                response: {
+                    204: {
+                        type: 'null',
+                        description: 'Participation deleted',
+                    },
+                    401: errorResponseSchema,
+                    404: errorResponseSchema,
+                    409: errorResponseSchema,
+                },
+            },
+        },
         async (request, reply) => {
-            const event = await eventRepository.findOne({ where: { id: request.params.id }});
-
-            if (!event) {
-                return reply.code(404).send({ message: 'Событие не найдо' })
+            try {
+                await eventsService.leaveEvent(request.params.id, request.user.sub);
+                return reply.code(204).send();
+            } catch (error) {
+                return sendServiceError(reply, error);
             }
-
-            const existingParticipation = await participantsRepository.findOne({
-                where: { eventId: event.id, userId: request.user.sub}
-            })
-
-            if (!existingParticipation) {
-                return reply.code(409).send({
-                    message: 'Вы уже присоединились к событию'
-                })
-            }
-
-            await participantsRepository.delete({
-                id: existingParticipation.id,
-            })
-
-            return reply.code(204).send()
         }
     )
 }

@@ -1,13 +1,38 @@
 import { FastifyPluginAsync } from "fastify";
 
-import { User } from "../../db/entities";
+import {
+    authResponseSchema,
+    errorResponseSchema,
+    userSchema,
+    validationErrorResponseSchema,
+} from "../swagger/docs.schemas";
+import { sendServiceError } from "../service-error";
+import { AuthService } from "./auth.service";
 import { loginSchema, registerSchema } from "./auth.schema";
-import argon2 from "argon2";
 
 export const authRoutes: FastifyPluginAsync = async (app) => {
-    const userRepository = app.db.getRepository(User);
+    const authService = new AuthService(app.db);
 
-    app.post('/register', async (request, reply) => {
+    app.post('/register', {
+        schema: {
+            tags: ['Auth'],
+            summary: 'Register a user',
+            body: {
+                type: 'object',
+                properties: {
+                    email: { type: 'string', format: 'email' },
+                    password: { type: 'string', minLength: 8 },
+                    name: { type: 'string', minLength: 2, maxLength: 100 },
+                },
+                required: ['email', 'password', 'name'],
+            },
+            response: {
+                201: authResponseSchema,
+                400: validationErrorResponseSchema,
+                409: errorResponseSchema,
+            },
+        },
+    }, async (request, reply) => {
         const parseBody = registerSchema.safeParse(request.body);
 
         if (!parseBody.success) {
@@ -20,34 +45,35 @@ export const authRoutes: FastifyPluginAsync = async (app) => {
             })
         }
 
-        const { email, password, name} = parseBody.data;
-        const existingUser = await userRepository.findOne({ where: { email } })
+        try {
+            const user = await authService.register(parseBody.data);
+            const token = await reply.jwtSign({ sub: user.id, email: user.email });
 
-        if (existingUser) {
-            return reply.code(409).send({ message: 'Пользователь с таким email уже есть' })
+            return reply.code(201).send({ token, user });
+        } catch (error) {
+            return sendServiceError(reply, error);
         }
-
-        const passwordHash = await argon2.hash(password);
-        const user = userRepository.create({
-            email,
-            passwordHash,
-            name
-        })
-
-        const saveduser = await userRepository.save(user);
-        const token = await reply.jwtSign({ sub: saveduser.id, email: saveduser.email})
-
-        return reply.code(201).send({
-            token,
-            user: {
-                id: saveduser.id,
-                email: saveduser.email,
-                name: saveduser.name
-            }
-        })
     })
 
-    app.post('/login', async (request, reply) => {
+    app.post('/login', {
+        schema: {
+            tags: ['Auth'],
+            summary: 'Login',
+            body: {
+                type: 'object',
+                properties: {
+                    email: { type: 'string', format: 'email' },
+                    password: { type: 'string', minLength: 1 },
+                },
+                required: ['email', 'password'],
+            },
+            response: {
+                200: authResponseSchema,
+                400: validationErrorResponseSchema,
+                401: errorResponseSchema,
+            },
+        },
+    }, async (request, reply) => {
         const parseBody = loginSchema.safeParse(request.body);
 
         if (!parseBody.success) {
@@ -60,46 +86,34 @@ export const authRoutes: FastifyPluginAsync = async (app) => {
             })
         }
 
-        const { email, password } = parseBody.data
-        const user = await userRepository.findOne({ where: { email} })
+        try {
+            const user = await authService.login(parseBody.data);
+            const token = await reply.jwtSign({ sub: user.id, email: user.email });
 
-        if (!user) {
-            return reply.code(401).send({ message: 'Неверные логин или пароль'})
+            return reply.send({ token, user });
+        } catch (error) {
+            return sendServiceError(reply, error);
         }
-
-        const isPasswordValid = await argon2.verify(user.passwordHash, password)
-
-        if (!isPasswordValid) {
-            return reply.code(401).send({ message: 'Неверные логин или пароль'})
-        }
-
-        const token = await reply.jwtSign({ sub: user.id, email: user.email});
-
-        return reply.send({
-            token,
-            user: {
-                id: user.id,
-                email: user.email,
-                name: user.name
-            }
-        })
     })
 
-    app.get('/me', { preHandler: [app.authenticate] } , async (request, reply) => {
-        const userId = request.user.sub
-        const user = await userRepository.findOne({  where: { id: userId }})
-
-        if (!user) {
-            return reply.code(404).send({ message: 'Пользователь не найден'})
+    app.get('/me', {
+        preHandler: [app.authenticate],
+        schema: {
+            tags: ['Auth'],
+            summary: 'Get current user',
+            security: [{ bearerAuth: [] }],
+            response: {
+                200: userSchema,
+                401: errorResponseSchema,
+                404: errorResponseSchema,
+            },
+        },
+    }, async (request, reply) => {
+        try {
+            const user = await authService.getCurrentUser(request.user.sub);
+            return reply.send(user);
+        } catch (error) {
+            return sendServiceError(reply, error);
         }
-
-        return reply.send({
-            id: user.id,
-            email: user.email,
-            name: user.name,
-            createdAt: user.createdAt,
-            updatedAt: user.updatedAt
-        })
     })
-
 }

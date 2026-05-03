@@ -25,3 +25,5 @@ export const updateEventSchema = z.object({
     message: 'Передайте хотябы одно поле для редактирования'
 })
 
+export type CreateEventInput = z.infer<typeof createEventSchema>
+export type UpdateEventInput = z.infer<typeof updateEventSchema>
