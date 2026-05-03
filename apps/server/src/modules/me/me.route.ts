@@ -1,26 +1,36 @@
 import { FastifyPluginAsync } from "fastify";
 
-import { EventParticipant } from "../../db/entities";
-
+import { errorResponseSchema, eventSchema } from "../swagger/docs.schemas";
+import { MeService } from "./me.service";
 
 export const meRoutes: FastifyPluginAsync = async (app) => {
-    const participantsRepository = app.db.getRepository(EventParticipant)
+    const meService = new MeService(app.db);
 
     app.get('/events/joined',
-        { preHandler: [app.authenticate]} ,
-        async (request, reply) => {
-            const participation = await participantsRepository.find({
-                where: { userId: request.user.sub },
-                relations: ['event'],
-                order: {
-                    joinedAt: 'DESC'
-                }
-            })
-
-            return participation.map(participation => ({
-                joinedAt: participation.joinedAt,
-                event: participation.event
-            }))
+        {
+            preHandler: [app.authenticate],
+            schema: {
+                tags: ['Me'],
+                summary: 'List joined events',
+                security: [{ bearerAuth: [] }],
+                response: {
+                    200: {
+                        type: 'array',
+                        items: {
+                            type: 'object',
+                            properties: {
+                                joinedAt: { type: 'string', format: 'date-time' },
+                                event: eventSchema,
+                            },
+                            required: ['joinedAt', 'event'],
+                        },
+                    },
+                    401: errorResponseSchema,
+                },
+            },
+        },
+        async (request) => {
+            return meService.listJoinedEvents(request.user.sub);
         }
     )
 }
