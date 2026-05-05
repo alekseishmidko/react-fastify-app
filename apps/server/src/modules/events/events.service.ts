@@ -1,7 +1,7 @@
 import type { DataSource } from "typeorm";
 
 import { Event as EventEntity } from "../../db/entities/event.entity";
-import { EventParticipant } from "../../db/entities/event-participant.entity";
+import { EventParticipant } from "../../db/entities";
 import type { CreateEventInput, UpdateEventInput } from "./events.schema";
 import { ServiceError } from "../service-error";
 
