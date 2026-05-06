@@ -4,23 +4,43 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0d2887e7-39ec-4566-a94a-b6df4d100ae0" name="Changes" comment="создание client">
-      <change afterPath="$PROJECT_DIR$/apps/client/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/hooks/use-auth-bootstrap.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/hooks/use-mobile.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/shared/api/events.api.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/shared/api/http.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/shared/api/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/shared/api/me.api.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/shared/api/types.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/stores/auth.store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/stores/events.store.ts" afterDir="false" />
+    <list default="true" id="0d2887e7-39ec-4566-a94a-b6df4d100ae0" name="Changes" comment="создание shared, stores">
+      <change afterPath="$PROJECT_DIR$/apps/client/nginx.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/app/router/guest.route.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/app/router/protected.layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/app/router/protected.route.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/app/router/root-redirect.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/app/router/root.layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/components/app-sidebar/app-sidebar-brand.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/components/app-sidebar/app-sidebar-footer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/components/app-sidebar/app-sidebar-nav.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/components/app-sidebar/app-sidebar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/components/error-retry-block.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/components/page-shell.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/avatar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/breadcrumb.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/button.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/card.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/collapsible.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/dropdown-menu.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/field.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/input.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/label.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/separator.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/sheet.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/sidebar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/skeleton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/slider.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/table.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/tabs.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/text-area.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/toggle-group.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/toggle.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/tooltip.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/client/eslint.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/eslint.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/tsconfig.app.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/tsconfig.app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/vite.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/.prettierrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,7 +49,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="54" />
+    <option name="cachedIndexableFilesCount" value="71" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -37,6 +57,8 @@
         <option value="tsconfig.json" />
         <option value="Dockerfile" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -73,34 +95,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Docker.devops.db: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.server &gt; db:create.executor&quot;: &quot;Run&quot;,
-    &quot;npm.server &gt; dev.executor&quot;: &quot;Run&quot;,
-    &quot;npm.server &gt; migration:generate.executor&quot;: &quot;Run&quot;,
-    &quot;npm.server &gt; migration:run.executor&quot;: &quot;Run&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/alexeishmidko/webstorm/fastify-monorepo/apps/client/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Docker.devops.db: Compose Deployment.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "dev",
+    "javascript.preferred.runtime.type.id": "node",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.server > db:create.executor": "Run",
+    "npm.server > dev.executor": "Run",
+    "npm.server > migration:generate.executor": "Run",
+    "npm.server > migration:run.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "/Users/alexeishmidko/webstorm/fastify-monorepo/node_modules/prettier",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "ts.external.directory.path": "/Users/alexeishmidko/webstorm/fastify-monorepo/apps/client/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/apps/client/src/app" />
       <recent name="$PROJECT_DIR$/apps/server/src/modules/swagger" />
       <recent name="$PROJECT_DIR$/apps/server" />
     </key>
@@ -195,7 +220,8 @@
       <workItem from="1777705785914" duration="5904000" />
       <workItem from="1777996065971" duration="484000" />
       <workItem from="1777996923006" duration="2957000" />
-      <workItem from="1778032081638" duration="3359000" />
+      <workItem from="1778032081638" duration="4288000" />
+      <workItem from="1778083834324" duration="2459000" />
     </task>
     <task id="LOCAL-00001" summary="development">
       <option name="closed" value="true" />
@@ -221,7 +247,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778000063438</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="создание shared, stores">
+      <option name="closed" value="true" />
+      <created>1778035779285</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1778035779285</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,7 +278,8 @@
     <MESSAGE value="development" />
     <MESSAGE value="запуск и рефактор проекта" />
     <MESSAGE value="создание client" />
-    <option name="LAST_COMMIT_MESSAGE" value="создание client" />
+    <MESSAGE value="создание shared, stores" />
+    <option name="LAST_COMMIT_MESSAGE" value="создание shared, stores" />
     <option name="NON_MODAL_COMMIT_POSTPONE_SLOW_CHECKS" value="false" />
   </component>
   <component name="XDebuggerManager">
