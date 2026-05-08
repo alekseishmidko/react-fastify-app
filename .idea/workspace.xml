@@ -4,44 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0d2887e7-39ec-4566-a94a-b6df4d100ae0" name="Changes" comment="создание shared, stores">
-      <change afterPath="$PROJECT_DIR$/apps/client/nginx.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/app/router/guest.route.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/app/router/protected.layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/app/router/protected.route.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/app/router/root-redirect.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/app/router/root.layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/components/app-sidebar/app-sidebar-brand.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/components/app-sidebar/app-sidebar-footer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/components/app-sidebar/app-sidebar-nav.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/components/app-sidebar/app-sidebar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/components/error-retry-block.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/components/page-shell.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/avatar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/breadcrumb.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/button.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/card.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/collapsible.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/dropdown-menu.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/field.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/input.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/label.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/separator.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/sheet.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/sidebar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/skeleton.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/slider.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/table.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/tabs.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/text-area.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/toggle-group.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/toggle.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ui/tooltip.tsx" afterDir="false" />
+    <list default="true" id="0d2887e7-39ec-4566-a94a-b6df4d100ae0" name="Changes" comment="настроен prettier">
+      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/auth/components/auth-form-card.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/auth/components/auth-form-error-alert.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/auth/components/auth-screen-layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/auth/components/login-form.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/auth/components/register-form.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/auth/login/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/auth/register/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/events/all/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/events/components/created-events-table.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/events/components/event-create-form.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/events/components/event-details-card.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/events/components/event-edit-form.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/events/components/event-form.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/events/components/event-list-card.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/events/components/joined-events-table.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/events/components/my-events-stat-title.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/events/details/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/events/edit/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/events/hooks/use-events-by-id.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/events/my/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/events/new/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/eslint.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/eslint.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/.prettierrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/app/router.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/app/router.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/app/router/guest.route.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/app/router/guest.route.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/main.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +39,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="71" />
+    <option name="cachedIndexableFilesCount" value="104" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -57,8 +47,8 @@
         <option value="tsconfig.json" />
         <option value="Dockerfile" />
         <option value="TypeScript File" />
-        <option value="TypeScript JSX File" />
         <option value="JavaScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -112,6 +102,8 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "npm.client > build.executor": "Run",
+    "npm.client > dev.executor": "Run",
     "npm.server > db:create.executor": "Run",
     "npm.server > dev.executor": "Run",
     "npm.server > migration:generate.executor": "Run",
@@ -130,7 +122,7 @@
       <recent name="$PROJECT_DIR$/apps/server" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.devops.db: Compose Deployment">
+  <component name="RunManager" selected="npm.client &gt; build">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
@@ -150,11 +142,21 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="server &gt; db:create" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/apps/server/package.json" />
+    <configuration name="client &gt; build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/apps/client/package.json" />
       <command value="run" />
       <scripts>
-        <script value="db:create" />
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="client &gt; dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/apps/client/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -165,16 +167,6 @@
       <command value="run" />
       <scripts>
         <script value="dev" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration name="server &gt; migration:generate" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/apps/server/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="migration:generate" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -192,11 +184,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.client &gt; build" />
+        <item itemvalue="npm.client &gt; dev" />
         <item itemvalue="Docker.devops.db: Compose Deployment" />
         <item itemvalue="npm.server &gt; dev" />
         <item itemvalue="npm.server &gt; migration:run" />
-        <item itemvalue="npm.server &gt; migration:generate" />
-        <item itemvalue="npm.server &gt; db:create" />
       </list>
     </recent_temporary>
   </component>
@@ -221,7 +213,8 @@
       <workItem from="1777996065971" duration="484000" />
       <workItem from="1777996923006" duration="2957000" />
       <workItem from="1778032081638" duration="4288000" />
-      <workItem from="1778083834324" duration="2459000" />
+      <workItem from="1778083834324" duration="3512000" />
+      <workItem from="1778170802015" duration="2561000" />
     </task>
     <task id="LOCAL-00001" summary="development">
       <option name="closed" value="true" />
@@ -255,7 +248,23 @@
       <option name="project" value="LOCAL" />
       <updated>1778035779285</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="настроен роутинг, ui, prettier">
+      <option name="closed" value="true" />
+      <created>1778087257167</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1778087257167</updated>
+    </task>
+    <task id="LOCAL-00006" summary="настроен prettier">
+      <option name="closed" value="true" />
+      <created>1778087654536</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1778087654536</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -279,7 +288,9 @@
     <MESSAGE value="запуск и рефактор проекта" />
     <MESSAGE value="создание client" />
     <MESSAGE value="создание shared, stores" />
-    <option name="LAST_COMMIT_MESSAGE" value="создание shared, stores" />
+    <MESSAGE value="настроен роутинг, ui, prettier" />
+    <MESSAGE value="настроен prettier" />
+    <option name="LAST_COMMIT_MESSAGE" value="настроен prettier" />
     <option name="NON_MODAL_COMMIT_POSTPONE_SLOW_CHECKS" value="false" />
   </component>
   <component name="XDebuggerManager">
@@ -288,6 +299,21 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/apps/server/src/modules/events/events.route.ts</url>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/apps/client/src/pages/auth/components/register-form.tsx</url>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/apps/client/src/pages/events/all/page.tsx</url>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/apps/client/src/pages/events/my/page.tsx</url>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
