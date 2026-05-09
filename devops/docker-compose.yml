@@ -16,8 +16,8 @@ services:
     restart: unless-stopped
   api:
     build:
-      context: ../server
-      dockerfile: Dockerfile
+      context: ..
+      dockerfile: apps/server/Dockerfile
     container_name: events_api
     environment:
       NODE_ENV: production
@@ -32,16 +32,18 @@ services:
       - "3000"
     restart: unless-stopped
   web:
+    # web-контейнер - единственная публичная точка входа:
+    # Nginx отдает собранный клиент и пересылает /api/* в сервис api.
     build:
-      context: ../client
-      dockerfile: Dockerfile
+      context: ..
+      dockerfile: apps/client/Dockerfile
       args:
         VITE_API_URL: /api
     container_name: events_web
     depends_on:
       - api
     ports:
-      - ${WEB_POST}:80
+      - ${WEB_PORT}:80
     restart: unless-stopped
 
 volumes:
