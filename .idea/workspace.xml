@@ -4,34 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0d2887e7-39ec-4566-a94a-b6df4d100ae0" name="Changes" comment="настроен prettier">
-      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/auth/components/auth-form-card.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/auth/components/auth-form-error-alert.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/auth/components/auth-screen-layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/auth/components/login-form.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/auth/components/register-form.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/auth/login/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/auth/register/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/events/all/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/events/components/created-events-table.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/events/components/event-create-form.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/events/components/event-details-card.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/events/components/event-edit-form.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/events/components/event-form.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/events/components/event-list-card.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/events/components/joined-events-table.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/events/components/my-events-stat-title.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/events/details/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/events/edit/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/events/hooks/use-events-by-id.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/events/my/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/pages/events/new/page.tsx" afterDir="false" />
+    <list default="true" id="0d2887e7-39ec-4566-a94a-b6df4d100ae0" name="Changes" comment="собран проект . готово к тестированию">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/app/router.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/app/router.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/app/router/guest.route.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/app/router/guest.route.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/main.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/nginx.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/devops/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/devops/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +16,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="104" />
+    <option name="cachedIndexableFilesCount" value="126" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -87,7 +64,10 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Docker.devops.api: Compose Deployment.executor": "Run",
     "Docker.devops.db: Compose Deployment.executor": "Run",
+    "Docker.devops.web: Compose Deployment.executor": "Run",
+    "Docker.devops: Compose Deployment.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -122,10 +102,31 @@
       <recent name="$PROJECT_DIR$/apps/server" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.client &gt; build">
+  <component name="RunManager" selected="Docker.devops.web: Compose Deployment">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="devops: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="devops/docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="devops.api: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="api" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="devops/docker-compose.yml" />
+        </settings>
       </deployment>
       <method v="2" />
     </configuration>
@@ -135,6 +136,19 @@
           <option name="services">
             <list>
               <option value="db" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="devops/docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="devops.web: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="web" />
             </list>
           </option>
           <option name="sourceFilePath" value="devops/docker-compose.yml" />
@@ -152,43 +166,13 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="client &gt; dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/apps/client/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="dev" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration name="server &gt; dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/apps/server/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="dev" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration name="server &gt; migration:run" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/apps/server/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="migration:run" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.client &gt; build" />
-        <item itemvalue="npm.client &gt; dev" />
+        <item itemvalue="Docker.devops.web: Compose Deployment" />
+        <item itemvalue="Docker.devops: Compose Deployment" />
+        <item itemvalue="Docker.devops.api: Compose Deployment" />
         <item itemvalue="Docker.devops.db: Compose Deployment" />
-        <item itemvalue="npm.server &gt; dev" />
-        <item itemvalue="npm.server &gt; migration:run" />
+        <item itemvalue="npm.client &gt; build" />
       </list>
     </recent_temporary>
   </component>
@@ -214,7 +198,8 @@
       <workItem from="1777996923006" duration="2957000" />
       <workItem from="1778032081638" duration="4288000" />
       <workItem from="1778083834324" duration="3512000" />
-      <workItem from="1778170802015" duration="2561000" />
+      <workItem from="1778170802015" duration="3207000" />
+      <workItem from="1778301566151" duration="1610000" />
     </task>
     <task id="LOCAL-00001" summary="development">
       <option name="closed" value="true" />
@@ -264,7 +249,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778087654536</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="собран проект . готово к тестированию">
+      <option name="closed" value="true" />
+      <created>1778205945694</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1778205945694</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -290,7 +283,8 @@
     <MESSAGE value="создание shared, stores" />
     <MESSAGE value="настроен роутинг, ui, prettier" />
     <MESSAGE value="настроен prettier" />
-    <option name="LAST_COMMIT_MESSAGE" value="настроен prettier" />
+    <MESSAGE value="собран проект . готово к тестированию" />
+    <option name="LAST_COMMIT_MESSAGE" value="собран проект . готово к тестированию" />
     <option name="NON_MODAL_COMMIT_POSTPONE_SLOW_CHECKS" value="false" />
   </component>
   <component name="XDebuggerManager">
@@ -302,17 +296,14 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/apps/client/src/pages/auth/components/register-form.tsx</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/apps/client/src/pages/events/all/page.tsx</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/apps/client/src/pages/events/my/page.tsx</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
